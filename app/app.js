@@ -478,6 +478,11 @@
                 configItem: { value: null, squash: true }
             },
         });
+        $stateProvider.state('config-health-pen', {
+            url: '/config-health-pen',
+            templateUrl: 'app/health/config-health-pen/config-health-pen.html',
+            title: 'Config Health Pen'
+        });
         $stateProvider.state('subarrayHealth', {
             url: '/subarray-health',
             templateUrl: 'app/health/subarray-health/subarray-health.html',

@@ -18,6 +18,7 @@
         api.aggregateSensorDetail = null;
         api.resourceGroups = ['Components', 'Proxies'];
         api.sensorGroups = {};
+        api.configPens = {};
 
         api.loadSensorGroups = function () {
             var deferred = $q.defer();
@@ -198,6 +199,20 @@
         api.getApodForDate = function (date) {
             var formatedDate = moment(date).format('YYYY/MM/DD');
             return $http(createRequest('get', urlBase() + '/apod/' + formatedDate));
+        };
+
+        api.getConfigHealthPens = function () {
+            var deferred = $q.defer();
+            $http(createRequest('get', urlBase() + '/config-health-pens'))
+                .then(function (result) {
+                    api.configPens = result.data;
+                    // TODO populate config-health-pens sensors by traversing the svg tree
+                    deferred.resolve(api.configPens);
+                }, function (result) {
+                    $log.error(result);
+                    deferred.reject();
+                });
+            return deferred.promise;
         };
 
         api.checkOutOfDateVersion = function () {

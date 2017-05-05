@@ -15,8 +15,11 @@ angular.module('katGui.d3')
                 //the bockvalue is the relative size of each child element, it is
                 //set to a static 100 when we get our monitor data in the StatusService
                 var mapLayout = d3.layout.partition()
-                    .value(function () {
-                        return 10;
+                    .value(function (d, i) {
+                        if (i === 0) {
+                            return 0.5;
+                        }
+                        return 1;
                     })
                     .sort(function (a, b) {
                         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;

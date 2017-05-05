@@ -27,7 +27,7 @@
         }
 
         vm.populateTree = function (parent, receptor) {
-            StatusService.receptorTreesSensors['(ant|m).*' + parent.sensor] = 1;
+            StatusService.receptorTreesSensors['(ant|m[0-9][0-9][0-9]).*' + parent.sensor + '$'] = 1;
             if (parent.children && parent.children.length > 0) {
                 parent.children.forEach(function (child) {
                     vm.populateTree(child, receptor);
@@ -38,7 +38,7 @@
                         parent.children = [];
                     }
                     parent.children.push({name: sub, sensor: sub, hidden: true});
-                    StatusService.receptorTreesSensors['(ant|m).*' + sub] = 1;
+                    StatusService.receptorTreesSensors['(ant|m[0-9][0-9][0-9]).*' + sub + '$'] = 1;
                 });
             }
         };

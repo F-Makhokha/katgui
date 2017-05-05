@@ -1,0 +1,8 @@
+<div flex style="min-width: 600px; min-height: 600px" ng-controller="ConfigHealthPenViewCtrl as vm" layout="column" layout-align="start center">
+    <md-select ng-model="vm.selectedSvg" class="md-primary"
+        style="margin: 4px; padding: 0"
+        placeholder="Select a file to display" ng-change="vm.compileSvgContents(vm.selectedSvg)">
+        <md-option ng-value="key" ng-repeat="key in vm.configPenKeys">{{key}}</md-option>
+    </md-select>
+    <div ng-bind-html="vm.trustedContent" flex></div>
+</div>
