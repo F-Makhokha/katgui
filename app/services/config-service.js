@@ -342,7 +342,7 @@
                                 if (node === 'single_ctl') {
                                     group = 'Proxies';
                                 }
-                                var processClientConfig = systemConfig['katconn:clients'][processList[i]].split(':');
+                                var processClientConfig = systemConfig['katconn:clients'];
                                 api.resources[processList[i]] = {
                                     name: processList[i],
                                     host: processClientConfig[0],
