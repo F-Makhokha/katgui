@@ -117,6 +117,12 @@
                                 <md-menu-item>
                                     <md-button ng-disabled="!parent.vm.iAmAtLeastCA()" ng-click="parent.vm.cloneSBIntoPBDialog($event, item)" title="Clone Schedule Block into a Program Block">Clone SB Into PB...</md-button>
                                 </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="parent.vm.addUserLog($event, item)" title="Add user log">
+                                        <span style="margin-right: 4px"></span>
+                                        <span>Add User Log...</span>
+                                    </md-button>
+                                </md-menu-item>
                             </md-menu-content>
                         </md-menu>
                     </div>

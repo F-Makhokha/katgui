@@ -60,7 +60,7 @@
     function ApplicationCtrl($rootScope, $scope, $state, $interval, $mdSidenav, $localStorage, $q, THEMES,
         AlarmsService, ConfigService, USER_ROLES, MonitorService, KatGuiUtil, SessionService,
         CENTRAL_LOGGER_PORT, $log, NotifyService, $timeout, StatusService, ObsSchedService,
-        MOMENT_DATETIME_FORMAT) {
+        MOMENT_DATETIME_FORMAT, UserLogService) {
         var vm = this;
 
         var theme = _.find(THEMES, function(theme) {
@@ -416,6 +416,15 @@
                 NotifyService.showSimpleDialog('Error Viewing Logfiles', 'There is no KATLogFileServer IP defined in config, please contact CAM support.');
             }
         };
+
+        $rootScope.editUserLog = function (newUserLog, event) {
+            UserLogService.editUserLog(
+                newUserLog, $rootScope.currentUser.id === newUserLog.user_id, 'userlogDialogContentElement', event)
+                .then(function() {
+                    $state.transitionTo('userlogs', null, { notify: false, reload: false });
+                });
+        };
+
         $rootScope.openKibanaInNewTab = function(programName) {
             var kibanaUrl;
             if (programName) {

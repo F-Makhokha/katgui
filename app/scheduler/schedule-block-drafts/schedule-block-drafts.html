@@ -94,6 +94,12 @@
                                 <md-button ng-disabled="!parent.vm.iAmAtLeastCA() || item.pb_id === null || item.pb_id === undefined"
                                     ng-click="parent.vm.removeSBFromAnyPB(item)" title="Remove Schedule block from any Program Block">Remove SB From PB</md-button>
                             </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="parent.vm.addUserLog($event)" title="Add user log">
+                                    <span style="margin-right: 4px"></span>
+                                    <span>Add User Log...</span>
+                                </md-button>
+                            </md-menu-item>
                         </md-menu-content>
                     </md-menu>
                 </div>

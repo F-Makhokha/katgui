@@ -202,6 +202,7 @@
             }
         };
 
+
         vm.addUserLog = function (event) {
             var newUserLog = {
                 start_time: vm.newLogStartTimeText,
@@ -211,15 +212,7 @@
                 content: '',
                 attachments: []
             };
-            vm.editUserLog(newUserLog, event);
-        };
-
-        vm.editUserLog = function (userlog, event) {
-            UserLogService.editUserLog(
-                userlog, $rootScope.currentUser.id === userlog.user_id, 'userlogDialogContentElement', event)
-                .then(function() {
-                    $state.transitionTo('userlogs', null, { notify: false, reload: false });
-                });
+            $rootScope.editUserLog(newUserLog, event);
         };
 
         vm.afterInit = function() {
@@ -258,7 +251,7 @@
                     };
                     // allow some time before showing the dialog to avoid the dialog overlay bugging out
                     $timeout(function () {
-                        vm.editUserLog(newUserLog, event);
+                        $rootScope.editUserLog(newUserLog, event);
                     }, 250);
                 } else if ($stateParams.action === 'edit' && $stateParams.id) {
                     UserLogService.getUserLogById($stateParams.id).then(function (result) {
@@ -298,7 +291,7 @@
 
                         // allow some time before showing the dialog to avoid the dialog overlay bugging out
                         $timeout(function () {
-                            vm.editUserLog(userlog, event);
+                            $rootScope.editUserLog(userlog, event);
                         }, 250);
                     });
                 }

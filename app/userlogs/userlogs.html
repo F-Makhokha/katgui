@@ -101,7 +101,7 @@
                     </span>
                 </span>
                 <md-button title="Edit User Log" class="inline-action-button" style="margin: 0"
-                           ng-click="vm.editUserLog(userlog, $event)">
+                           ng-click="$root.editUserLog(userlog, $event)">
                     <span style="display: inherit" ng-class="{'fa fa-edit': userlog.user_id === $root.currentUser.id, 'fa fa-eye': userlog.user_id !== $root.currentUser.id}"></span>
                 </md-button>
             </div>
@@ -181,7 +181,7 @@
                     </span>
                 </span>
                 <md-button title="Edit User Log" class="inline-action-button" style="margin: 0"
-                           ng-click="vm.editUserLog(userlog, $event)">
+                           ng-click="$root.editUserLog(userlog, $event)">
                     <span style="display: inherit" ng-class="{'fa fa-edit': userlog.user_id === $root.currentUser.id, 'fa fa-eye': userlog.user_id !== $root.currentUser.id}"></span>
                 </md-button>
             </div>

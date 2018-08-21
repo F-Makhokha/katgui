@@ -60,7 +60,7 @@
                                 ng-click="vm.initLastKnownConfig(); $mdMenu.open($event)">
                                 <span class="fa fa-ellipsis-v"></span>
                             </md-button>
-                            <md-menu-content style="min-height: 427px">
+                            <md-menu-content style="min-height: 476px">
                                 <md-menu-item>
                                     <md-button ng-disabled="parent.vm.sensorValues[vm.subarray.name + '_state'].value === 'active'" ng-click="parent.vm.openBandsDialog($event)" title="Select a Band">
                                         <span style="margin-right: 4px" class="fa fa-signal"></span>
@@ -112,6 +112,12 @@
                                         ng-disabled="!vm.lastKnownSubarrayConfig || parent.vm.sensorValues[vm.subarray.name + '_state'].value !== 'inactive'">
                                         <span style="margin-right: 4px" class="fa fa-cubes"></span>
                                         <span>Load Last Known Subarray Config</span>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="parent.vm.addUserLog($event)" title="Add user log">
+                                        <span style="margin-right: 4px" class="fa fa-plus"></span>
+                                        <span>Add User Log...</span>
                                     </md-button>
                                 </md-menu-item>
                             </md-menu-content>
