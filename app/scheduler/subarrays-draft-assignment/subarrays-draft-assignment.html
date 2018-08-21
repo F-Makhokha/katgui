@@ -98,7 +98,7 @@
                             <span class="icon-button fa fa-ellipsis-v" md-ink-ripple style="padding: 6px" ng-click="$mdMenu.open($event); $event.stopPropagation()"></span>
                             <md-menu-content>
                                 <md-menu-item>
-                                    <md-button ng-disabled="!(item.type === 'OBSERVATION' && parent.vm.iAmAtLeastCA())" ng-click="vm.verifyDraft(item)">Verify Draft</md-button>
+                                    <md-button ng-disabled="!(item.type === 'OBSERVATION' && parent.vm.iAmAtLeastCA())" ng-click="vm.verifyDraft(item)">Verify Assigned</md-button>
                                 </md-menu-item>
                                 <md-menu-item>
                                     <md-button ng-click="parent.vm.viewSBTasklog(item, 'dryrun')">View Dryrun</md-button>
