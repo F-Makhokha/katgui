@@ -1011,7 +1011,7 @@
             return resources;
         }
 
-        vm.addUserLog = function ($event, sb=null) {
+        vm.addUserLog = function ($event, sb) {
             var content = '';
             var end_time = '';
             var allocations = [];
