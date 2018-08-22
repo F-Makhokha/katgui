@@ -998,7 +998,9 @@
         vm.getResources = function (spec, dry_run_alloc, alloc) {
             resources = [];
             if (spec) {
-                resources = spec.split(',')
+                if (!spec.indexOf('{') > -1) {
+                    resources = spec.split(',')
+                }
             }
             if (dry_run_alloc) {
                 resources = dry_run_alloc.split(',');
@@ -1015,8 +1017,8 @@
             var allocations = [];
             var assignedResources = [];
             var start_time = $rootScope.utcDateTime;
-            dryrun_link = ConfigService.GetKATTaskFileServerURL() + "/tailtask/" + sb.id_code + "/dryrun"
             if (sb) {
+                dryrun_link = ConfigService.GetKATTaskFileServerURL() + "/tailtask/" + sb.id_code + "/dryrun"
                 content = "Schedule block: " + sb.id_code + "\n\nDry run link: " + dryrun_link;
                 if (sb.actual_start_time) {
                     start_time = sb.actual_start_time.split('.')[0];
@@ -1027,20 +1029,19 @@
                 allocations = vm.getResources(sb.antenna_spec, sb.antennas_dry_run_alloc,
                     sb.antennas_alloc).concat(vm.getResources(sb.controlled_resources_spec,
                       sb.controlled_resources_dry_run_alloc, sb.controlled_resources_alloc));
-
-                for (var id = 0; id < allocations.length; id++) {
-                    if (_.findWhere(UserLogService.tags, {name: allocations[id]})) {
-                        assignedResources.push(
-                            _.findWhere(UserLogService.tags, {name: allocations[id]}));
+                for (var i = 0; i < allocations.length; i++) {
+                    var tag = _.findWhere(UserLogService.tags, {name: allocations[i]})
+                    if (tag) {
+                        assignedResources.push(tag);
                     }
                 }
             }
             else {
                 allocations = ObsSchedService.sensorValues[vm.subarray.name + '_allocations'].parsedValue;
-                for (var id = 0; id < allocations.length; id++) {
-                    if (_.findWhere(UserLogService.tags, {name: allocations[id][0]})) {
-                        assignedResources.push(
-                            _.findWhere(UserLogService.tags, {name: allocations[id][0]}));
+                for (var i = 0; i < allocations.length; i++) {
+                    var tag = _.findWhere(UserLogService.tags, {name: allocations[i][0]})
+                    if (tag) {
+                        assignedResources.push(tag);
                     }
                 }
             }
